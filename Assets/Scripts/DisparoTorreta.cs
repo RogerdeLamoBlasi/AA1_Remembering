@@ -1,4 +1,5 @@
 
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,20 +8,27 @@ public class DisparoTorreta : MonoBehaviour
     public GameObject prefabBala;
     public Transform Boquilla;
     public float fuerza = 20f;
+
     
+
+    private void Start()
+    {
+        
+
+    }
+
     void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            GameObject bala = Instantiate(
-                prefabBala,
-                Boquilla.position,
-                Boquilla.rotation * Quaternion.Euler(90, 0, 0)
-            );
-            Destroy(bala, 2);
+            GameObject bala = Instantiate(prefabBala, Boquilla.position, Quaternion.identity);
 
-            Rigidbody rb = bala.GetComponent<Rigidbody>();
-            rb.AddForce(Boquilla.forward * fuerza, ForceMode.Impulse);
+            bala.transform.localEulerAngles = new Vector3(bala.transform.localEulerAngles.x+90f, 0, 0);
+
+            // SALE DISPARADO
+            bala.GetComponent<Rigidbody>()?.AddForce(Boquilla.forward * fuerza, ForceMode.Impulse);
+
         }
     }
+
 }
