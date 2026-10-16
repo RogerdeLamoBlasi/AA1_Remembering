@@ -24,8 +24,7 @@ public class DisparoTorreta : MonoBehaviour
             GameObject bala = Instantiate(prefabBala, Boquilla.position, Quaternion.identity);
 
             bala.transform.localEulerAngles = new Vector3(bala.transform.localEulerAngles.x+90f, 0, 0);
-
-            // SALE DISPARADO
+     
             bala.GetComponent<Rigidbody>()?.AddForce(Boquilla.forward * fuerza, ForceMode.Impulse);
 
         }

@@ -6,13 +6,13 @@ public class DestruccionTarget : MonoBehaviour
     public GameObject modeloCompleto;
     public GameObject prefabRoto;
 
-    private Collider colliderTarget;
-    private float contador = 0f;
+    private Collider colliderDiana;
     private bool destruido = false;
+    private float contador = 0f;
 
     void Start()
     {
-        colliderTarget = GetComponent<Collider>();
+        colliderDiana = GetComponent<Collider>();
     }
 
     void Update()
@@ -23,6 +23,10 @@ public class DestruccionTarget : MonoBehaviour
 
             if (contador >= 3f)
             {
+                modeloCompleto.SetActive(true);
+                colliderDiana.enabled = true;
+
+                destruido = false;
                 contador = 0f;
             }
         }
@@ -42,10 +46,11 @@ public class DestruccionTarget : MonoBehaviour
             );
 
             modeloCompleto.SetActive(false);
-            colliderTarget.enabled = false;
+            colliderDiana.enabled = false;
+
             destruido = true;
             contador = 0f;
-            Destroy(other.gameObject);
         }
     }
+
 }
