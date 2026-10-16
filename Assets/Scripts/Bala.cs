@@ -2,19 +2,18 @@ using UnityEngine;
 
 public class Bala : MonoBehaviour
 {
-
-
-
-
-    private void OnCollisionEnter(Collision collision)
+    void Start()
     {
-        DestroyImmediate(gameObject);
-
-
+        Destroy(gameObject, 5f);
     }
-    private void OnTriggerEnter(Collider other)
+
+    void OnCollisionEnter(Collision collision)
     {
-        DestroyImmediate(gameObject);
-        
+        Destroy(gameObject);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
     }
 }
