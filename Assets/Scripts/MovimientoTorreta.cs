@@ -8,6 +8,7 @@ public class MovimientoTorreta : MonoBehaviour
 
     public float sensibilidad = 1f;
 
+
     void Update()
     {
         Vector2 movimiento = Mouse.current.delta.ReadValue();
@@ -16,7 +17,6 @@ public class MovimientoTorreta : MonoBehaviour
         float vertical = movimiento.y * sensibilidad;
 
         baseTorreta.Rotate(0, horizontal, 0);
-
         torsoTorreta.Rotate(-vertical, 0, 0);
     }
 }
