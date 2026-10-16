@@ -7,7 +7,7 @@ public class DisparoTorreta : MonoBehaviour
     public GameObject prefabBala;
     public Transform Boquilla;
     public float fuerza = 20f;
-
+    
     void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
@@ -17,6 +17,8 @@ public class DisparoTorreta : MonoBehaviour
                 Boquilla.position,
                 Boquilla.rotation * Quaternion.Euler(90, 0, 0)
             );
+            Destroy(bala, 2);
+
             Rigidbody rb = bala.GetComponent<Rigidbody>();
             rb.AddForce(Boquilla.forward * fuerza, ForceMode.Impulse);
         }
