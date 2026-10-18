@@ -1,16 +1,14 @@
 using UnityEngine;
+using TMPro;
 
 public class Puntuacion : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public TMP_Text textoPuntuacion;
+    private int puntos = 0;
 
-    // Update is called once per frame
-    void Update()
+    public void SumarPuntos(int cantidad)
     {
-        
+        puntos += cantidad;
+        textoPuntuacion.text = "Puntuacion: " + puntos;
     }
 }
