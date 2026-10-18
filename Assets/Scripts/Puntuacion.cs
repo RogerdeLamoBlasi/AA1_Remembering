@@ -11,4 +11,9 @@ public class Puntuacion : MonoBehaviour
         puntos += cantidad;
         textoPuntuacion.text = "Puntuacion: " + puntos;
     }
+    public void RestarPuntos(int cantidad)
+    {
+        puntos -= cantidad;
+        textoPuntuacion.text = "Puntuacion: " + puntos;
+    }
 }
