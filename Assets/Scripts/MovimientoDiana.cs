@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class MovimientoDiana : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float distancia = 3f;
+    public float velocidad = 1f;
+
+    private Vector3 posicionInicial;
+
     void Start()
     {
-        
+        // Guarda la posición inicial de la diana
+        posicionInicial = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // Movimiento horizontal de la diana
+        float movimiento = Mathf.Sin(Time.time * velocidad) * distancia;
+        transform.position = posicionInicial + Vector3.right * movimiento;
     }
 }
