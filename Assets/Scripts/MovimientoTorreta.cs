@@ -8,7 +8,7 @@ public class MovimientoTorreta : MonoBehaviour
 
     public float sensibilidad = 1f;
 
-
+    //Se llama una vez por frame y se encarga de leer el movimiento del ratón y aplicar la rotación a la torreta.
     void Update()
     {
         Vector2 movimiento = Mouse.current.delta.ReadValue();

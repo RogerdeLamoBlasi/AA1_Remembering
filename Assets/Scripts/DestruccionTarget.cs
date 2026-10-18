@@ -5,15 +5,10 @@ public class DestruccionTarget : MonoBehaviour
 {
     public GameObject modeloCompleto;
     public GameObject prefabRoto;
+    public Collider colliderDiana;
 
-    private Collider colliderDiana;
     private bool destruido = false;
     private float contador = 0f;
-
-    void Start()
-    {
-        colliderDiana = GetComponent<Collider>();
-    }
 
     void Update()
     {
@@ -21,6 +16,7 @@ public class DestruccionTarget : MonoBehaviour
         {
             contador += Time.deltaTime;
 
+            // Si han pasado 3 segundos, vuelve a activar el modelo completo y el collider
             if (contador >= 3f)
             {
                 modeloCompleto.SetActive(true);
@@ -32,25 +28,29 @@ public class DestruccionTarget : MonoBehaviour
         }
     }
 
+    // Detecta la colisión con la bala y destruye el modelo completo, instanciando el prefab roto
     void OnTriggerEnter(Collider other)
-    {
-        if (destruido)
-            return;
+{
+    if (destruido)
+        return;
 
+        // Comprueba si el objeto que colisiona tiene la etiqueta "Bala"
         if (other.CompareTag("Bala"))
-        {
-            Instantiate(
-                prefabRoto,
-                modeloCompleto.transform.position,
-                modeloCompleto.transform.rotation
-            );
+    {
+        GameObject roto = Instantiate(
+            prefabRoto,
+            modeloCompleto.transform.position,
+            modeloCompleto.transform.rotation
+        );
+        // Destruye el prefab roto después de 3 segundos
+        Destroy(roto, 3f);
 
-            modeloCompleto.SetActive(false);
-            colliderDiana.enabled = false;
+        modeloCompleto.SetActive(false);
+        colliderDiana.enabled = false;
 
-            destruido = true;
-            contador = 0f;
-        }
+        destruido = true;
+        contador = 0f;
     }
+}
 
 }

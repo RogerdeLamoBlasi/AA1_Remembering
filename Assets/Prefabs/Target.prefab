@@ -69,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DestruccionTarget
   modeloCompleto: {fileID: 7674300643415304919}
   prefabRoto: {fileID: 6518227896446662802, guid: 0d9e5bd56ef186948b1165ad44a4859e, type: 3}
+  colliderDiana: {fileID: 1349003481184345269}
 --- !u!1001 &7368449842279815046
 PrefabInstance:
   m_ObjectHideFlags: 0
